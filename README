@@ -3,13 +3,28 @@ Ans: undefined মানে ভেরিয়েবল ডিক্লেয়
 null মানে ডেভেলপার ইচ্ছাকৃতভাবে বলছে যে এই ভেরিয়েবলের কোনো মান নেই বা খালি।
 
 2. What is the use of the map() function in JavaScript? How is it different from forEach()?
-Ans:
+Ans: map() একটি অ্যারের প্রতিটি উপাদানের উপর একটা ফাংশন চালায় এবং নতুন একটা অ্যারে ফেরত দেয়।
+forEach() শুধু প্রতিটি উপাদানের উপর ফাংশন চালায় কিন্তু কোনো নতুন অ্যারে ফেরত দেয় না।
 
 3. What is the difference between == and ===?
-Ans:
+Ans:== (Loose Equality Operator)
+--শুধু value চেক করে
+--দরকার হলে type conversion (implicit conversion) করে
+--কখনো কখনো ভুল/অপ্রত্যাশিত ফল দেয়
+
+=== (Strict Equality Operator)
+value + data type দুটোই চেক করে
+কোনো type conversion করে না
+বেশি safe ও recommended
 
 4. What is the significance of async/await in fetching API data?
-Ans:
+Ans: async/await দিয়ে promise-based কোডকে synchronous-এর মতো সহজে লেখা যায়।  
+   --- callback hell বা .then() চেইন এড়ানো যায়  
+   --- কোড পড়তে ও বুঝতে সহজ হয়  
+   --- error handling করা সহজ (try/catch)
 
 5. Explain the concept of Scope in JavaScript (Global, Function, Block).
-Ans:
+Ans:--- Global Scope: ভেরিয়েবল ফাইলের বাইরে বা function-এর বাইরে ডিক্লেয়ার করলে সব জায়গা থেকে অ্যাক্সেস করা যায়।  
+   --- Function Scope: var দিয়ে function-এর ভিতর ডিক্লেয়ার করলে শুধু ঐ function-এর মধ্যেই কাজ করে।  
+   --- Block Scope: let ও const দিয়ে {} block-এর ভিতর ডিক্লেয়ার করলে শুধু ঐ block-এর মধ্যে কাজ করে (if, for, while ইত্যাদির ভিতর)।  
+   
