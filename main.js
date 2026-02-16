@@ -16,6 +16,7 @@ async function fetchCategories() {
     renderCategories(cats);
   } catch (err) { console.error(err); }
 }
+
 function renderCategories(cats) {
   const container = document.getElementById("category-filter");
   container.innerHTML = `<button class="btn btn-primary rounded-full" data-cat="all">All</button>`;
@@ -90,6 +91,7 @@ function renderProducts(products, containerId) {
     container.appendChild(card);
   });
 }
+
 async function showProductModal(id) {
   const res = await fetch(`${BASE_URL}/products/${id}`);
   const p = await res.json();
