@@ -90,3 +90,48 @@ function renderProducts(products, containerId) {
     container.appendChild(card);
   });
 }
+async function showProductModal(id) {
+  const res = await fetch(`${BASE_URL}/products/${id}`);
+  const p = await res.json();
+
+  const modal = document.getElementById("product-modal");
+  const body = document.getElementById("modal-body");
+  body.innerHTML = `
+    <div class="grid md:grid-cols-2 gap-8">
+      <img src="${p.image}" alt="${p.title}" class="w-full h-96 object-contain bg-white rounded-xl p-8 border"/>
+      <div>
+        <h3 class="text-3xl font-bold">${p.title}</h3>
+        <p class="text-4xl font-bold text-primary my-4">$${p.price.toFixed(2)}</p>
+        <div class="badge badge-lg mb-4">${p.category}</div>
+        <div class="rating mb-4">${'<input type="radio" class="mask mask-star bg-orange-400" checked disabled />'.repeat(Math.round(p.rating.rate))}</div>
+        <p class="mb-6">${p.description}</p>
+        <button class="btn btn-primary w-full" onclick="addToCart(${p.id}); document.getElementById('product-modal').close();">Add to Cart</button>
+      </div>
+    </div>
+  `;
+  modal.showModal();
+}
+
+function addToCart(id) {
+  const product = allProducts.find(p => p.id === id);
+  if (!product) return;
+
+  const item = cart.find(i => i.id === id);
+  if (item) item.quantity = (item.quantity || 1) + 1;
+  else cart.push({ ...product, quantity: 1 });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+
+  // Toast
+  const toast = document.createElement("div");
+  toast.className = "toast toast-top toast-end";
+  toast.innerHTML = `<div class="alert alert-success"><span>Added: ${product.title.slice(0,30)}...</span></div>`;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2500);
+}
+
+function updateCartCount() {
+  const count = cart.reduce((sum, i) => sum + (i.quantity || 1), 0);
+  document.getElementById("cart-count").textContent = count;
+}
