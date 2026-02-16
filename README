@@ -1,0 +1,15 @@
+1. What is the difference between null and undefined?
+Ans: undefined মানে ভেরিয়েবল ডিক্লেয়ার করা হয়েছে কিন্তু কোনো মান দেওয়া হয়নি। জাভাস্ক্রিপ্ট নিজে থেকেই এটাকে `undefined` করে দেয়।
+null মানে ডেভেলপার ইচ্ছাকৃতভাবে বলছে যে এই ভেরিয়েবলের কোনো মান নেই বা খালি।
+
+2. What is the use of the map() function in JavaScript? How is it different from forEach()?
+Ans:
+
+3. What is the difference between == and ===?
+Ans:
+
+4. What is the significance of async/await in fetching API data?
+Ans:
+
+5. Explain the concept of Scope in JavaScript (Global, Function, Block).
+Ans:
